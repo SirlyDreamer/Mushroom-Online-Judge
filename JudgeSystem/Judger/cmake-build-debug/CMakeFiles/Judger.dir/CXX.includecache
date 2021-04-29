@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sirly/Intelligent-Online-Judge/JudgeSystem/Judger/main.cpp
+iostream
+-
+cstdlib
+-
+string
+-
+

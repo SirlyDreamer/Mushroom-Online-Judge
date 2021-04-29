@@ -1,0 +1,3 @@
+/home/sirly/Intelligent-Online-Judge/JudgeSystem/Judger/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/sirly/Intelligent-Online-Judge/JudgeSystem/Judger/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/sirly/Intelligent-Online-Judge/JudgeSystem/Judger/cmake-build-debug/CMakeFiles/Judger.dir

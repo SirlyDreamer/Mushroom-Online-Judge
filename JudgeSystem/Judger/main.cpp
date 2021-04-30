@@ -5,7 +5,10 @@
 
 using namespace std;
 
-enum{c = 0, cpp, java, python3, kotlin};//python3 ang kotlin is not supported right now (QwQ)
+enum
+{
+	c = 0, cpp, java, python3, kotlin
+};//python3 ang kotlin is not supported right now (QwQ)
 
 struct config
 {
@@ -20,13 +23,13 @@ struct config
 const int lannum = 5;
 string command[lannum];
 
-config getConfig()
+config getConfig ()
 {
 	//TODO:Read config from file or network
 	//To test
 	config dev;
 	dev.lang = cpp;
-	dev.source = "source.cpp";
+	dev.source = "./source.cpp";
 	dev.cpuLimit = 2;
 	dev.memLimit = 256;
 	dev.casenum = 1;
@@ -36,58 +39,62 @@ config getConfig()
 
 void initEnv (string source)
 {
-	command[c] = "gcc -g -O2 -std=gnu11 -static " + source + " -lm &> compile.res";
-	command[cpp] = "g++ -g -O2 -std=gnu++17 -static " + source +" &> compile.res";
-	command[java] = "javac -encoding UTF-8 -sourcepath . -d . " + source + " &> compile.res";
-	command[python3] = "pypy3 -m py_compile " + source + " &> compile.res";
-	command[kotlin] = "kotlinc -d . " + source + " &> compile.res";
+	command[c] = "gcc -g -O2 -std=gnu11 -static " + source + " -lm -o source 2> compile.txt";
+	command[cpp] = "g++ -g -O2 -std=gnu++17 -static " + source + "-o source 2> compile.txt";
+	command[java] = "javac -encoding UTF-8 -sourcepath . -d . " + source + " 2> compile.txt";
+	command[python3] = "pypy3 -m py_compile " + source + " 2> compile.txt";
+	command[kotlin] = "kotlinc -d . " + source + " 2> compile.txt";
 }
 
-bool isCE()
+bool isCE ()
 {
-	fstream res;
-	bool ce;
+	ifstream res ("./compile.txt");
+	char buffer[256];
 	string line;
-	res.open("./compile.res",ios::in);
-	if(!res.is_open())
+	if (!res.is_open ())
 	{
 		cout << "System Error" << endl;
 		return true;
 	}
-	while(!res.eof())
+	while (!res.eof ())
 	{
-		res >> line;
-		if(line.size() == 0)
+		line.clear ();
+		res.getline (buffer, 255);
+		line = string (buffer);
+		if (line.length () == 0)
 			continue;
-		if(line.find("error")!=line.size())
+		if (line.find ("error") != string::npos)
 			return true;
 	}
-	res.close();
+	res.close ();
 	return false;
 }
 
 int main ()
 {
 	config src;
-	src = getConfig();
-	initEnv(src.source);
-	system(command[src.lang].c_str());
-	if(isCE())
+	src = getConfig ();
+	initEnv (src.source);
+	system (command[src.lang].c_str ());
+	if (isCE ())
 	{
-		ifstream errorinfo("./compile.res");
-		char buffer[130];
-		if(!errorinfo.is_open())
-		{
-			cout << "System Error" << endl;
-			return 0;
-		}
 		cout << "Compile Error" << endl;
-		while(!errorinfo.eof())
-		{
-			errorinfo.getline(buffer,128);
-			cout << buffer << endl;
-		}
+	}
+	else
+	{
+		cout << "Compile Successfully!" << endl;
+	}
+	ifstream errorinfo ("./compile.txt");
+	char buffer[256];
+	if (!errorinfo.is_open ())
+	{
+		cout << "System Error" << endl;
 		return 0;
+	}
+	while (!errorinfo.eof ())
+	{
+		errorinfo.getline (buffer, 255);
+		cout << buffer << endl;
 	}
 	return 0;
 }

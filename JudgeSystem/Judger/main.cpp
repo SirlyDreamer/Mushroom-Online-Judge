@@ -29,11 +29,11 @@ config getConfig ()
 	//To test
 	config dev;
 	dev.lang = cpp;
-	dev.source = "./source.cpp";
+	dev.source = "./judge/source.cpp";
 	dev.cpuLimit = 2;
 	dev.memLimit = 256;
 	dev.casenum = 1;
-	dev.cases = "./cases/";
+	dev.cases = "./judge/cases/";
 	return dev;
 }
 

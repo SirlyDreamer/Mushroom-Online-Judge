@@ -96,5 +96,7 @@ int main ()
 		errorinfo.getline (buffer, 255);
 		cout << buffer << endl;
 	}
+
+
 	return 0;
 }

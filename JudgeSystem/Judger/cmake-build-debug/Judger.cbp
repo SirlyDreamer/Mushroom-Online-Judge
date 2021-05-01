@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/sirly/Intelligent-Online-Judge/JudgeSystem/Judger/Judger.h">
+			<Option target="Judger"/>
+		</Unit>
 		<Unit filename="/home/sirly/Intelligent-Online-Judge/JudgeSystem/Judger/main.cpp">
 			<Option target="Judger"/>
 		</Unit>

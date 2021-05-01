@@ -3,4 +3,4 @@ project(Judger)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Judger main.cpp)
+add_executable(Judger main.cpp Judger.h)

@@ -1,2 +1,2 @@
-# Intelligent-Online-Judge
+# Mushroom-Online-Judge
 A growing online judge system.

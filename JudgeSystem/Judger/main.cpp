@@ -88,7 +88,7 @@ int main ()
 	char buffer[256];
 	if (!errorinfo.is_open ())
 	{
-		cout << "System Error" << endl;
+		cout << "System Error : File IO Expection" << endl;
 		return 0;
 	}
 	while (!errorinfo.eof ())
@@ -97,6 +97,7 @@ int main ()
 		cout << buffer << endl;
 	}
 
+	
 
 	return 0;
 }
